@@ -10,4 +10,9 @@ class Chamomile extends Flower {
         this.setFresh(fresh);
         this.setColor(color);
     }
+
+    @Override
+    public boolean hasSpikes() {
+        return true;
+    }
 }

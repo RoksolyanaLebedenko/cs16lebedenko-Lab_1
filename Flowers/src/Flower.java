@@ -4,7 +4,10 @@
  * Created by Roksolyana Lebedenko on 04.10.2016.
  */
 
-class Flower{
+abstract class Flower{
+
+    public abstract boolean hasSpikes();
+
     double size = 0;
 
     private double price = 0;

@@ -28,5 +28,6 @@ public class Main {
         System.out.println("Price of bouquet = " + bouquet.Price());
         System.out.print("Flowers with given size of stalk - ");
         bouquet.sizeOfStalk(40, 41);
+
     }
 }
