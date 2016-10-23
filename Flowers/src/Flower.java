@@ -1,55 +1,43 @@
-
-
 /**
- * Created by Roksolyana Lebedenko on 04.10.2016.
+ * Created by Roksolyana Lebedenko on 18.10.2016.
  */
 
-abstract class Flower{
+public class Flower {
 
-    public abstract boolean hasSpikes();
+    protected FlowerSpec spec;
 
-    double size = 0;
-
-    private double price = 0;
-
-    double fresh = 0;
-
-    private String color = "";
-
-    public double getSize() {
-        return size;
+    public Flower(FlowerSpec spec){
+        this.spec = spec;
     }
 
-    void setSize(double size) {
-        this.size = size;
+    public String getType() {
+
+        return spec.getType();
     }
+    public double getPrice() {
 
-
-    double getPrice() {
-        return price;
+        return spec.getPrice();
     }
+    public double getLength() {
 
-    void setPrice(double price) {
-
-        this.price = price;
+        return spec.getLength();
     }
+    public FlowerColor getColor() {
 
+        return spec.getColor();
+    }
     public double getFresh() {
-        return fresh;
+
+        return spec.getFresh();
     }
 
-    void setFresh(double fresh) {
-        this.fresh = fresh;
+
+    public String toString() {
+        return "Type: " + getType() + " price is " + String.valueOf(getPrice())
+                + " its color is " + getColor() + " fresh level is " + String.valueOf(getFresh())
+                + " its height " + String.valueOf(getLength());
     }
 
-    String getColor() {
-
-        return color;
-    }
-
-    void setColor(String color) {
-
-        this.color = color;
-    }
 }
+
 
