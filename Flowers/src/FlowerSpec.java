@@ -5,17 +5,19 @@
  */
 public class FlowerSpec{
 
-
-    protected FlowerColor color;
-    protected double length;
-    protected double fresh;
     protected double price;
-    protected String type;
+    protected double fresh;
+    protected double length;
+    protected FlowerColor color;
 
 
-    public String getType() {
-        return type;
+    public FlowerSpec(double price, double fresh, double length, FlowerColor color) {
+        this.price = price;
+        this.fresh = fresh;
+        this.color = color;
+        this.length = length;
     }
+
     public double getPrice() {
         return price;
     }
@@ -36,10 +38,6 @@ public class FlowerSpec{
 
     public void setFresh(double fresh) {
         this.fresh = fresh;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public void setPrice(double price) { this.price = price; }

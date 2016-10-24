@@ -28,24 +28,28 @@ class Bouquet {
     }
 
     public Flower[] search(FlowerSpec spec){
-        Flower[] new_f = new Flower[lastIndex];
-        int count = 0;
-        Flower[] matching = new Flower[count];
 
-        for (Flower i: this.flwrs){
-            if (i.getFresh() == spec.getFresh()){
-                count ++;
+        Flower[] new_f = new Flower[lastIndex+1];
+        int counter = 0;
+        for (Flower i: this.flwrs) {
+            if (i.getFresh() == spec.getFresh()) {
+                counter += 1;
             }
-            if (i.getLength() == spec.getLength()){
-                count ++;
+            if (i.getLength() == spec.getLength()) {
+                counter += 1;
             }
-            if (i.getColor() == spec.getColor()){
-                count ++;
+            if (i.getColor() == spec.getColor()) {
+                counter += 1;
             }
-            if (i.getPrice() == spec.getPrice()){
-                count ++;
+            if (i.getPrice() == spec.getPrice()) {
+                counter += 1;
             }
         }
+        Flower[] matching = new Flower[counter + 1];
+            if (counter == 5){
+                System.arraycopy(new_f, 0, matching, 0, counter + 1);
+            }
+
         return matching;
     }
 
@@ -83,7 +87,7 @@ class Bouquet {
         for (int i = 0; i < lastIndex; i++){
             System.out.println(MessageFormat.format("{0}: Color = {1}, Price = {2}, Size = {3}, Fresh = {4}",
                     flwrs[i].getClass().getSimpleName(), flwrs[i].getColor(), flwrs[i].getPrice(),
-                    flwrs[i].getLength(), flwrs[i].getLength()));
+                    flwrs[i].getLength(), flwrs[i].getFresh()));
         }
     }
 }
