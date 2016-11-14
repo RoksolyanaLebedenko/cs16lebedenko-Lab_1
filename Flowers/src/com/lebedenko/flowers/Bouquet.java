@@ -1,18 +1,42 @@
-import java.text.MessageFormat;
-import java.util.Iterator;
-import java.util.Objects;
+package com.lebedenko.flowers;
 
+import com.lebedenko.orders.Item;
+
+import java.text.MessageFormat;
+import com.lebedenko.orders.*;
 /**
  * Created by Roksolyana Lebedenko on 04.10.2016.
  */
-class Bouquet {
+public class Bouquet implements Item {
     private int max = 16;
+
+    @Override
+    public double getPrice() {
+        System.out.println("Plain bouquet");
+        System.out.println("=");
+        return 50;
+    }
+
+//    private P price;
+//    Bouquet(P price){
+//        this.price = price;
+//    }
+//
+//    public String toString() {
+//        return price.toString();
+//    }
+//
+//    @Override
+//    public int compareTo(Bouquet o) {
+//        return this.Price() - (o.Price());
+//    }
+
 
     private Flower[] flwrs = new Flower[max];
 
     private int lastIndex = 0;
 
-    void addFlower(Flower newFlwr){
+    public void addFlower(Flower newFlwr){
 
         if (max - 1 < lastIndex) {
             Flower[] newFlwrs = new Flower[max * 2];
@@ -53,7 +77,7 @@ class Bouquet {
         return matching;
     }
 
-    void sortByFreshLevel(){
+    public void sortByFreshLevel(){
         for (int i = 1; i < lastIndex; i++){
             double curr = flwrs[i].getFresh();
             Flower flo = flwrs[i];
@@ -66,15 +90,15 @@ class Bouquet {
         }
     }
 
-    double Price(){
-        double sum = 0;
+    public int Price(){
+        int price = 0;
         for (int i = 0; i < lastIndex; i++){
-            sum += flwrs[i].getPrice();
+            price += flwrs[i].getPrice();
         }
-        return sum;
+        return price;
     }
 
-    void sizeOfStalk(double size1, double size2){
+    public void sizeOfStalk(double size1, double size2){
         for (int i = 1; i < lastIndex; i++){
             if (size1 <=  flwrs[i].getLength() && flwrs[i].getLength() <= size2){
                 System.out.println(MessageFormat.format("{0}:  Size = {1}",
@@ -83,11 +107,13 @@ class Bouquet {
         }
     }
 
-    void makeBouquet(){
+    public void makeBouquet(){
         for (int i = 0; i < lastIndex; i++){
             System.out.println(MessageFormat.format("{0}: Color = {1}, Price = {2}, Size = {3}, Fresh = {4}",
                     flwrs[i].getClass().getSimpleName(), flwrs[i].getColor(), flwrs[i].getPrice(),
                     flwrs[i].getLength(), flwrs[i].getFresh()));
         }
     }
+
+
 }
