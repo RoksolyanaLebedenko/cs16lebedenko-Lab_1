@@ -1,15 +1,24 @@
 package com.lebedenko.orders;
 import com.lebedenko.orders.IDelivery.IDelivery;
 import com.lebedenko.orders.IPayment.IPayment;
+import com.lebedenko.suppliers.ChamomileSuplier;
+import com.lebedenko.suppliers.TulipSuplier;
+
 import java.util.LinkedList;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by Roksolyana Lebedenko on 13.11.2016.
  */
-public class Order {
-    LinkedList<Item> items = new LinkedList<>();
-    IDelivery delivery;
-    IPayment payment;
+public class Order extends Observable {
+    public Order(){
+        this.addObserver(new ChamomileSuplier());
+        this.addObserver(new TulipSuplier());
+    }
+    private LinkedList<Item> items;
+    private IDelivery delivery;
+    private IPayment payment;
 
     public void setPaymentStrategy(IPayment payment) {
         this.payment = payment;
@@ -28,6 +37,11 @@ public class Order {
     }
 
     public void processOrder() {
+        if (payment != null && delivery != null){
+            payment.pay(calculateTotalPrice());
+            this.notifyObservers(items);
+
+        }
     }
 
     public void addItem(Item items) {
@@ -37,6 +51,5 @@ public class Order {
     public void removeItem(Item item) {
         this.items.remove(item);
     }
-
 
 }

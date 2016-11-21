@@ -5,13 +5,13 @@ import com.lebedenko.orders.*;
 import com.lebedenko.orders.Order;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Created by Roksolyana Lebedenko on 18.10.2016.
  */
 public class Main {
     public static void main(String[] args) {
-
         com.lebedenko.flowers.Bouquet bouquet = new com.lebedenko.flowers.Bouquet();
         com.lebedenko.flowers.FlowerSpec Tulip1 = new com.lebedenko.flowers.FlowerSpec(10, 2.5, 17, com.lebedenko.flowers.FlowerColor.RED);
         com.lebedenko.flowers.FlowerSpec Tulip2 = new com.lebedenko.flowers.FlowerSpec(20, 1.5, 18, com.lebedenko.flowers.FlowerColor.BLUE);
@@ -43,7 +43,7 @@ public class Main {
         tpls[2] = new Tuple(3, 24);
         System.out.println(Arrays.toString(tpls));
 
-        Item decoration = new PaperDecorator(new RibbonDecorator(new BasketDecorator(new Bouquet())));
+        Item decoration = new PaperDecorator(new RibbonDecorator(new BasketDecorator(bouquet)));
         System.out.println(decoration.getPrice());
 
         Order firstOrder = new Order();
